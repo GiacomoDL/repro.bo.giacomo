@@ -1,17 +1,110 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>Archetype Created Web Application</display-name>
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>TestServlet</servlet-name>
-  	<display-name>TestServlet</display-name>
-  	<description></description>
-  	<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.test.TestServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>TestServlet</servlet-name>
-  	<url-pattern>/TestServlet</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>LoginServlet</display-name>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>DeleteRoleServlet</display-name>
+		<servlet-name>DeleteRoleServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.DeleteRoleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteRoleServlet</servlet-name>
+		<url-pattern>/DeleteRoleServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>DeleteUserServlet</display-name>
+		<servlet-name>DeleteUserServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.DeleteUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteUserServlet</servlet-name>
+		<url-pattern>/DeleteUserServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>InsertRoleServlet</display-name>
+		<servlet-name>InsertRoleServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.InsertRoleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertRoleServlet</servlet-name>
+		<url-pattern>/InsertRoleServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>InsertUserServlet</display-name>
+		<servlet-name>InsertUserServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.InsertUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertUserServlet</servlet-name>
+		<url-pattern>/InsertUserServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>LogoutServlet</display-name>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>RegistrationUserServlet</display-name>
+		<servlet-name>RegistrationUserServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.RegistrationUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistrationUserServlet</servlet-name>
+		<url-pattern>/RegistrationUserServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>UpdateRoleServlet</display-name>
+		<servlet-name>UpdateRoleServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.UpdateRoleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateRoleServlet</servlet-name>
+		<url-pattern>/UpdateRoleServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>UpdateUserServlet</display-name>
+		<servlet-name>UpdateUserServlet</servlet-name>
+		<servlet-class>repro.bo.giacomo.proxima.informatica.academy.seventh.servlet.UpdateUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateUserServlet</servlet-name>
+		<url-pattern>/UpdateUserServlet</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
 </web-app>

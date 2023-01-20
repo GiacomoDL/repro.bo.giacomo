@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+
+ <link rel="stylesheet" href="styles.css">
+ 
+</head>
+<body>
+
+<h1>Create your account</h1>
+	<form action="./RegistrationUserServlet" method="post">
+	
+  		<label>Email</label><br>
+  		<input type="email" name="email"><br>
+  		
+  		<label>First Name</label><br>
+  		<input type="text" name="firstname"><br>
+  		
+  		<label>Last Name</label><br>
+  		<input type="text" name="lastname"><br>
+  		
+  		<label>Data of Birth</label><br>
+  		<input type="date" name="dateofbirth"><br>
+  		
+  		<br>
+  		
+  		<input type="submit" id="button" value="Continue">
+  		
+  		<br>
+  		Already have an account? <a href="login.jsp">Log in</a>
+	</form> 
+</body>
+</html>

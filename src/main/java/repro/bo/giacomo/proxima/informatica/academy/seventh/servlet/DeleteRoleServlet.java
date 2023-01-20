@@ -1,4 +1,4 @@
-package repro.bo.giacomo.proxima.informatica.academy.seventh.test;
+package repro.bo.giacomo.proxima.informatica.academy.seventh.servlet;
 
 import java.io.IOException;
 
@@ -6,18 +6,19 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import repro.bo.giacomo.proxima.informatica.academy.seventh.service.RoleService;
 
 /**
- * Servlet implementation class TestServlet
+ * Servlet implementation class DeleteServlet
  */
-public class TestServlet extends HttpServlet {
+public class DeleteRoleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public TestServlet() {
+    public DeleteRoleServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -26,7 +27,14 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int roleId = Integer.parseInt(request.getParameter("roleId"));
+		if(RoleService.getInstance().deleteRole(roleId)) {
+			request.setAttribute("deleteRole", "OK");
+			request.getRequestDispatcher("role.jsp").forward(request, response);
+		}else {
+			request.setAttribute("deleteRole", "KO");
+			request.getRequestDispatcher("role.jsp").forward(request, response);
+		}
 	}
 
 	/**

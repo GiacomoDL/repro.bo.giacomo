@@ -2,11 +2,17 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
+<%@include file="authentication.jsp" %>
+
 <head>
 <meta charset="ISO-8859-1">
-<title>Index jsp</title>
+<title>Insert User</title>
 </head>
 <body>
-<p>TESTO JSP</p>
+<%@include file="header.jsp" %>
+
+<p>INSERT USER</p>
+
 </body>
 </html>
