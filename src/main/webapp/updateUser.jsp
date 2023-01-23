@@ -14,7 +14,7 @@
 </head>
 <body>
 <%@include file="header.jsp" %>
-
+<% System.out.println(request.getParameter("userId"));%>
 <% UserDto user = UserService.getInstance().selectById(Integer.parseInt(request.getParameter("userId"))); %>
 	<form action="./UpdateUserServlet" method="post">
 		

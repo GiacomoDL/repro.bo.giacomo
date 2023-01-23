@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Header</title>
 
  <link rel="stylesheet" href="header.css">
 
@@ -12,11 +12,11 @@
 <body>
 
  <div class="navbar">
-  <a href="user.jsp">Lista Utenti</a>
-  <a href="registration.html">Inserisci Utente</a>
+  <a href="user.jsp">User List</a>
+  <a href="registration.html">Insert User</a>
 <!--   <a href="updateUser.jsp">Modifica Utente</a> -->
-  <a href="role.jsp">Lista Ruoli</a>
-  <a href="insertRole.jsp">Inserisci Ruolo</a>
+  <a href="role.jsp">Role List</a>
+  <a href="insertRole.jsp">Insert Role</a>
 <!--   <a href="updateRole.jsp">Modifica Ruolo</a> -->
   <a id="right" href="LogoutServlet">Logout</a>
   <span> Welcome <%= session.getAttribute("userLoggedEmail") %> </span>
@@ -24,48 +24,48 @@
 
 <% 
 if(request.getAttribute("deleteUser") == "OK"){ %>
-	<p> Utente Eliminato </p>
+	<p> Deleted user </p>
 <% } %>
 <% 
 if(request.getAttribute("deleteUser") == "KO"){ %>
-	<p> Utente Non Eliminato </p>
+	<p> Unable to delete user </p>
 <% } %>
 
 <% 
 if(request.getAttribute("deleteRole") == "OK"){ %>
-	<p> Ruolo Eliminato </p>
+	<p> Deleted role </p>
 <% } %>
 <% 
 if(request.getAttribute("deleteRole") == "KO"){ %>
-	<p> Ruolo Non Eliminato </p>
+	<p> Unable to delete role </p>
 <% } %>
 
 
 <% 
 if(request.getAttribute("updateUser") == "OK"){ %>
-	<p> Utente Modificato </p>
+	<p> Updated user</p>
 <% } %>
 <% 
 if(request.getAttribute("updateUser") == "KO"){ %>
-	<p> Utente Non Modificato  </p>
+	<p> Unable to update user  </p>
 <% } %>
 
 <% 
 if(request.getAttribute("updateRole") == "OK"){ %>
-	<p> Ruolo Modificato </p>
+	<p> Updated role </p>
 <% } %>
 <% 
 if(request.getAttribute("updateRole") == "KO"){ %>
-	<p> Ruolo Non Modificato  </p>
+	<p> Unable to update role  </p>
 <% } %>
 
 <% 
 if(request.getAttribute("insertRole") == "OK"){ %>
-	<p> Ruolo Aggiunto </p>
+	<p> Inserted role </p>
 <% } %>
 <% 
 if(request.getAttribute("insertRole") == "KO"){ %>
-	<p> Ruolo Non Aggiunto  </p>
+	<p> Unable to insert role  </p>
 <% } %>
 </body>
 </html>

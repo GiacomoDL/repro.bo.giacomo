@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import org.proxima.common.mail.MailUtility;
 
 
 /**
@@ -60,9 +63,10 @@ public class RegistrationUserServlet extends HttpServlet {
 //		else
 //			user.setEnabled(false);
 
-		if (UserService.getInstance().insert(user))
+		if (UserService.getInstance().insert(user)) {
+			request.setAttribute("firstRegistration", "OK");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
-		else {
+		}else {
 			request.getRequestDispatcher("registration.html").forward(request, response);
 		}
 	}

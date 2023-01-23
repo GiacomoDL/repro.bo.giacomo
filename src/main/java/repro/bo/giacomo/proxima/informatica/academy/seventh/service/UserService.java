@@ -6,9 +6,11 @@ import org.proxima.common.mail.MailUtility;
 
 import proxima.informatica.academy.DatabaseManagerSingleton;
 import proxima.informatica.academy.dto.UserDto;
+import repro.bo.giacomo.proxima.informatica.academy.seventh.result.LoginResult;
 
 public class UserService {
 
+	private final int ROLE_NUMBER = 0;
 	private UserService() {
 	}
 
@@ -21,13 +23,39 @@ public class UserService {
 		return instance;
 	}
 
-	public boolean login(String email, String password) {
-		boolean response = false;
+	public LoginResult login(String email, String password) {
+		LoginResult result = new LoginResult();
 		UserDto user = DatabaseManagerSingleton.getInstance().getUserByEmailAndPassword(email, password);
-		if (user.getId() != null)
-			response = true;
+		if (user.getEmail() == null) {
+			result.setLoginResponse(false);
+			result.setLoginMessage("Email or Password not found");
+		} else if (user.getEnabled() == false) {
+			result.setLoginResponse(false);
+			result.setLoginMessage("Account not activated");
+		} else {
+			result.setLoginResponse(true);
+			result.setLoginMessage("Welcome");
+		}
+		return result;
+	}
 
-		return response;
+	public LoginResult login(String email) {
+		LoginResult result = new LoginResult();
+		UserDto user = DatabaseManagerSingleton.getInstance().getUserByEmail(email);
+		if (user.getEmail() == null) {
+			result.setLoginResponse(false);
+			result.setLoginMessage("Email not found");
+		} else if (user.getPassword() == null) {
+			result.setLoginResponse(false);
+			result.setLoginMessage("Password not found");
+		} else if (user.getEnabled() == false) {
+			result.setLoginResponse(false);
+			result.setLoginMessage("Account not activated");
+		} else {
+			result.setLoginResponse(true);
+			result.setLoginMessage("Welcome");
+		}
+		return result;
 	}
 
 	public boolean insert(UserDto user) {
@@ -35,11 +63,11 @@ public class UserService {
 
 		System.out.println(user.toString());
 		if (DatabaseManagerSingleton.getInstance().insertUser(user) > 0) {
-			try {
-				MailUtility.sendSimpleMail("dllgiacomo@gmail.com", "test", "Test invio email");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			UserDto userForId = DatabaseManagerSingleton.getInstance().getUserByEmail(user.getEmail());
+			MailUtility.sendSimpleMail("dllgiacomo@gmail.com", "Create a new password",
+					"Click <a href='http://localhost:8080/repro.bo.giacomo/completeRegistration.jsp?id="
+							+ userForId.getId() + "'>here</a> to complete your registration");
+
 			response = true;
 		}
 		return response;
@@ -56,6 +84,14 @@ public class UserService {
 		ArrayList<UserDto> listUsers = new ArrayList<UserDto>();
 
 		listUsers = DatabaseManagerSingleton.getInstance().selectAllUsers();
+
+		return listUsers;
+	}
+	
+	public ArrayList<UserDto> getAllUsersByRole() {
+		ArrayList<UserDto> listUsers = new ArrayList<UserDto>();
+
+		listUsers = DatabaseManagerSingleton.getInstance().getUsersByRole(ROLE_NUMBER);
 
 		return listUsers;
 	}

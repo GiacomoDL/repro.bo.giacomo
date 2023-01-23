@@ -11,8 +11,24 @@
 <h1>Login</h1>
 <% 
 if(request.getAttribute("logoutMessage") != null){ %>
-	<p> Logout Effettuato  </p>
+	<p> Logout complete  </p>
 <% } %>
+
+<% 
+if(request.getAttribute("loginFailed") != null){ %>
+	<p> <%= request.getAttribute("loginFailed") %>  </p>
+<% } %>
+
+<% 
+if(request.getAttribute("firstRegistration") != null){ %>
+	<p> Check your email for create a new password  </p>
+<% } %>
+
+<% 
+if(request.getAttribute("passwordRegistration") != null){ %>
+	<p> We have received your registration, your account will be activated soon  </p>
+<% } %>
+
 <form action="./LoginServlet" method="post">
   <label id="email">Email</label>
   <br>
