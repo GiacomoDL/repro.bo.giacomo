@@ -1,4 +1,6 @@
+<%@page import="repro.bo.giacomo.proxima.informatica.academy.seventh.service.SurveyquestionsService"%>
 <%@page import="java.util.List"%>
+<%@page import="proxima.informatica.academy.dto.SurveyquestionsDto"%>
 <%@page import="repro.bo.giacomo.proxima.informatica.academy.seventh.service.RoleService"%>
 <%@page import="proxima.informatica.academy.dto.RoleDto"%>
 <%@page import="java.nio.file.attribute.UserPrincipalLookupService"%>
@@ -21,24 +23,24 @@
  		document.getElementById("buttonUpdate").disabled = false;
 	}
 	
-	function deleteRole() {
+	function deleteUser() {
 		console.log("Delete");
-		document.getElementById("formSelectRole").action = "./DeleteRoleServlet";
-		document.getElementById("formSelectRole").method = "post";
-		document.getElementById("formSelectRole").submit;
+		document.getElementById("formSelectSurveyquestions").action = "./DeleteSurveyquestionsServlet";
+		document.getElementById("formSelectSurveyquestions").method = "post";
+		document.getElementById("formSelectSurveyquestions").submit;
 	}
 	
-	function updateRole() {
+	function updateUser() {
 		console.log("Update");
-		document.getElementById("formSelectRole").action = "./updateRole.jsp";
-		document.getElementById("formSelectRole").method = "post";
-		document.getElementById("formSelectRole").submit;
+		document.getElementById("formSelectSurveyquestions").action = "./updateSurveyquestions.jsp";
+		document.getElementById("formSelectSurveyquestions").method = "post";
+		document.getElementById("formSelectSurveyquestions").submit;
 	}
 	
 </script>
 <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>List Roles</title>
+<title>List Survey Questions</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -48,45 +50,45 @@
 <body>
 	<%@include file="header.jsp"%>
 <div class="container-fluid">
-	<h1>Role List</h1>
-	<form id="formSelectRole">
+<h1>Survey Question List</h1>
+	<form id="formSelectSurveyquestions">
 		<table class="table table-striped table-hover  table-bordered">
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col"></th>
 					<th scope="col">Id</th>
-					<th scope="col">Label</th>
-					<th scope="col">Description</th>
-					<th scope="col">Level</th>
+					<th scope="col">Survey ID</th>
+					<th scope="col">Question ID</th>
+					<th scope="col">Position</th>
 				</tr>
 			</thead>	
 			<%
-			List<RoleDto> roles = new ArrayList<RoleDto>();
-			roles = RoleService.getInstance().getAllRoles();
-			for (RoleDto role : roles) {
-				request.setAttribute("id", role.getId());
+			List<SurveyquestionsDto> listSurveyquestions = new ArrayList<SurveyquestionsDto>();
+			listSurveyquestions = SurveyquestionsService.getInstance().getAllSurveyquestions();
+			for (SurveyquestionsDto sq : listSurveyquestions) {
+				request.setAttribute("id", sq.getId());
 				
 			%>
 			<tr>
-				<th scope="row"><input type="radio" name="roleId" onclick="javascript:abilitaBottone();" value="<%out.print(role.getId());%>" /></th>
+				<th scope="row"><input type="radio" name="sqId" onclick="javascript:abilitaBottone();" value="<%out.print(sq.getId());%>" /></th>
 				<td>
 					<%
-					out.print(role.getId().toString());
+					out.print(sq.getId());
 					%>
 				</td>
 				<td>
 					<%
-					out.print(role.getLabel().toString());
+					out.print(sq.getSurveyId());
 					%>
 				</td>
 				<td>
 					<%
-					out.print(role.getDescription().toString());
+					out.print(sq.getQuestionId());
 					%>
 				</td>
 				<td>
 					<%
-					out.print(role.getLevel().toString());
+					out.print(sq.getPosition());
 					%>
 				</td>
 			</tr>
@@ -94,8 +96,8 @@
 			}
 			%>
 		</table>
-		<input class="btn btn-danger" type="submit" class="button" id="buttonDelete" value="Delete" disabled onclick="javascript:deleteRole();">
-		<input class="btn btn-primary" type="submit" class="button"	id="buttonUpdate" value="Update" disabled onclick="javascript:updateRole();">
+		<input class="btn btn-danger" type="submit" class="button" id="buttonDelete" value="Delete" disabled onclick="javascript:deleteUser();">
+		<input class="btn btn-primary" type="submit" class="button"	id="buttonUpdate" value="Update" disabled onclick="javascript:updateUser();">
 	</form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
